@@ -1,0 +1,26 @@
+---
+title: " "
+output: html_document
+---
+
+### **Pagos Vigilancia **
+
+
+```{r setup, include=FALSE, }
+library(dplyr)
+library(knitr)
+library(ggplot2)
+
+data <- read.csv("pagos.csv")
+
+```
+
+
+
+```{r, echo=FALSE}
+names(data) <- c("Vigilante", "Fecha", "Pago", "Quincena")
+
+kable(data)
+```
+
+

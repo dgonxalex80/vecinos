@@ -1,0 +1,20 @@
+name: "Vecinos"
+navbar:
+  title: "Vecinos"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Recaudo"
+      menu:
+        - text: "Enero 2025"
+          href: ene-2025.html
+        - text: "Febrero 2025"
+          href: feb-2025.html
+        - text: "Marzo 2025"
+          href: mar-2025.html
+          
+          
+          
+          
+    - text: "Pagos"
+      href: pagos.html

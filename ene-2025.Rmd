@@ -1,0 +1,41 @@
+---
+title: " "
+output: html_document
+---
+
+### **Recaudo Vigilancia - Enero 2025**
+
+
+```{r setup, include=FALSE, }
+library(dplyr)
+library(knitr)
+library(ggplot2)
+
+data <- read.csv("recaudo01-2025.csv")
+
+
+# Calculando los totales
+recaudo_total <- data %>% 
+  mutate(total = pago1 + pago2)
+
+total_quincena1 <- sum(data$pago1, na.rm = TRUE)
+total_quincena2 <- sum(data$pago2, na.rm = TRUE)
+total_general <- total_quincena1+total_quincena2
+```
+
+
+
+```{r, echo=FALSE}
+names(data) <- c("Placa", "Nombre", "Primera quincena", "Segunda quincena")
+
+kable(data)
+```
+
+
+
+```{r, echo=FALSE}
+kable(data.frame(
+  TOTALES = c("Total Primera Quincena", "Total Segunda Quincena", "Recaudo Total"),
+  Valor = c(total_quincena1, total_quincena2, total_general)
+))
+```
