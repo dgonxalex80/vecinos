@@ -7,6 +7,8 @@ navbar:
       href: index.html
     - text: "Recaudo"
       menu:
+        - text: "Cuota extra"
+          href: cuota-extra.html 
         - text: "Enero 2025"
           href: ene-2025.html
         - text: "Febrero 2025"

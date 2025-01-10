@@ -1,0 +1,48 @@
+---
+title: " "
+output: html_document
+---
+
+### **Recaudo Vigilancia - Cuota extra**
+
+
+```{r setup, include=FALSE, }
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library(scales) # para la función comma()
+library(readxl)
+library(formattable)
+data <- read_excel("vecinos.xlsx", sheet = "cuota-extra")
+total_cuota <- sum(data$cuota, na.rm = TRUE)
+
+
+```
+
+
+
+```{r, echo=FALSE}
+names(data) <- c("Placa", "Nombre","Cuota")
+#kable(data)
+```
+
+<br>
+
+```{r, echo=FALSE}
+# Crear un formato de color para la tabla
+formattable(data, 
+            list(
+              Cuota = color_tile("white", "#89BFFB") # Fondo de color gradiente
+            ))
+```
+
+<br><br> 
+<br><br> 
+
+<div class="box-blue">
+<span style='color:#696969'> 
+**Notas aclaratorias**
+
+* Se recoge cuota extra para completar pagos de vigilancia del mes de diciembre de 2024 (faltante: $180.000.oo) e iniciar nuevo año con uan base ($260.000.oo) 
+
+</div>

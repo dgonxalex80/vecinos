@@ -10,8 +10,11 @@ output: html_document
 library(dplyr)
 library(knitr)
 library(ggplot2)
+library(readxl)
+library(formattable)
+data <- read_excel("vecinos.xlsx", sheet = "pagos")
 
-data <- read.csv("pagos.csv")
+
 
 ```
 

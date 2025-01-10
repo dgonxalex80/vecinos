@@ -10,9 +10,9 @@ output: html_document
 library(dplyr)
 library(knitr)
 library(ggplot2)
-
-data <- read.csv("recaudo02-2025.csv")
-
+library(readxl)
+library(formattable)
+data <- read_excel("vecinos.xlsx", sheet = "feb2025")
 
 # Calculando los totales
 recaudo_total <- data %>% 
