@@ -6,50 +6,36 @@ output: html_document
 ### **Recaudo Vigilancia - Enero 2025**
 
 
-
 ```{r setup, include=FALSE, }
 library(dplyr)
 library(knitr)
 library(ggplot2)
-library(scales) # para la función comma()
 library(readxl)
 library(formattable)
-data <- read_excel("vecinos.xlsx", sheet = "ene2025")
-total_cuota <- sum(data$cuota, na.rm = TRUE)
+data <- read_excel("vecinos.xlsx", sheet = "feb2025")
 
+# Calculando los totales
+recaudo_total <- data %>% 
+  mutate(total = pago1 + pago2)
 
+total_quincena1 <- sum(data$pago1, na.rm = TRUE)
+total_quincena2 <- sum(data$pago2, na.rm = TRUE)
+total_general <- total_quincena1+total_quincena2
 ```
 
 
 
 ```{r, echo=FALSE}
-names(data) <- c("Placa", "Nombre","Quincena1", "Quincena2")
-#kable(data)
+names(data) <- c("Placa", "Nombre", "1ra quincena", "2da quincena")
+
+kable(data)
 ```
 
-<br>
+
 
 ```{r, echo=FALSE}
-# Crear un formato de color para la tabla
-formattable(data, 
-            list(
-              Quincena1 = color_tile("white", "#89BFFB"), # Fondo de color gradiente
-              Quincena2 = color_tile("white", "#89BFFB") # Fondo de color gradiente
-            ))
+kable(data.frame(
+  TOTALES = c("Total 1ra Quincena", "Total 2da Quincena", "Recaudo Total"),
+  Valor = c(total_quincena1, total_quincena2, total_general)
+))
 ```
-
-<br><br> 
-<br><br> 
-
-<!-- <div class="box-blue"> -->
-
-<!-- <span style='color:#696969'>  -->
-<!-- **Notas aclaratorias** -->
-<!-- </span>     -->
-
-
-<!-- * Se recoge cuota extra para completar pagos de vigilancia del mes de diciembre de 2024 (faltante: $180.000.oo) e iniciar nuevo año con uan base ($260.000.oo) -->
-</div>
-
-
-

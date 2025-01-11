@@ -3,17 +3,16 @@ title: " "
 output: html_document
 ---
 
-### **Recaudo Vigilancia - Enero 2025**
+### **Recaudo Vigilancia - Marzo 2025**
 
 
 ```{r setup, include=FALSE, }
 library(dplyr)
 library(knitr)
 library(ggplot2)
-library(formattable)
 library(readxl)
-data <- read_excel("vecinos.xlsx", sheet = "mar2025")
-
+library(formattable)
+data <- read_excel("vecinos.xlsx", sheet = "feb2025")
 
 # Calculando los totales
 recaudo_total <- data %>% 
@@ -27,7 +26,7 @@ total_general <- total_quincena1+total_quincena2
 
 
 ```{r, echo=FALSE}
-names(data) <- c("Placa", "Nombre", "Primera quincena", "Segunda quincena")
+names(data) <- c("Placa", "Nombre", "1ra quincena", "2da quincena")
 
 kable(data)
 ```
@@ -36,7 +35,7 @@ kable(data)
 
 ```{r, echo=FALSE}
 kable(data.frame(
-  TOTALES = c("Total Primera Quincena", "Total Segunda Quincena", "Recaudo Total"),
+  TOTALES = c("Total 1ra Quincena", "Total 2da Quincena", "Recaudo Total"),
   Valor = c(total_quincena1, total_quincena2, total_general)
 ))
 ```
