@@ -25,20 +25,28 @@ data <- read_excel("vecinos.xlsx", sheet = "cuota-extra")
 #
 # Agregar una fila con el total
 
-total <- c("Total cuota extra","",sum(data$cuota, na.rm = TRUE))
-data_total <- rbind(data,total) 
+total <- c(sum(data$cuota, na.rm = TRUE))
+#data_total <- rbind(data,total) 
 
 
 ```
 
 <br>
+```{r echo=FALSE}
+library(formattable)
+library(scales)
+
+# Crear formato de color con sombreado para valores mayores a cero
+formattable(data, 
+            list(cuota = color_tile("white", "lightblue")))
+
+```
+
 
 ```{r, echo=FALSE}
-# Crear un formato de color para la tabla
-formattable(data_total, 
-            list(
-              Cuota = color_tile("white", "#89BFFB") # Fondo de color gradiente
-            ))
+total = as.data.frame(total)
+formattable(total,
+            total=color_tile("white", "lightblue"))
 ```
 
 <br><br> 
