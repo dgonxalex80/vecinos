@@ -25,7 +25,7 @@ data <- read_excel("vecinos.xlsx", sheet = "cuota-extra")
 #
 # Agregar una fila con el total
 
-total <- c("Total cuotas","",sum(data$cuota, na.rm = TRUE))
+total <- c("Total cuota extra","",sum(data$cuota, na.rm = TRUE))
 data_total <- rbind(data,total) 
 
 
