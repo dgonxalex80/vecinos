@@ -14,7 +14,7 @@ library(scales) # para la función comma()
 library(readxl)
 library(formattable)
 data <- read_excel("vecinos.xlsx", sheet = "cuota-extra")
-total_cuota <- sum(data$cuota, na.rm = TRUE)
+
 
 
 ```
@@ -22,15 +22,20 @@ total_cuota <- sum(data$cuota, na.rm = TRUE)
 
 
 ```{r, echo=FALSE}
-names(data) <- c("Placa", "Nombre","Cuota")
-#kable(data)
+#
+# Agregar una fila con el total
+
+total <- c("Total cuotas","",sum(data$cuota, na.rm = TRUE))
+data_total <- rbind(data,total) 
+
+
 ```
 
 <br>
 
 ```{r, echo=FALSE}
 # Crear un formato de color para la tabla
-formattable(data, 
+formattable(data_total, 
             list(
               Cuota = color_tile("white", "#89BFFB") # Fondo de color gradiente
             ))
