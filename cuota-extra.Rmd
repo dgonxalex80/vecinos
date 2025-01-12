@@ -53,7 +53,7 @@ formattable(total,
 <span style='color:#696969'> 
 **Notas aclaratorias**
 
-* Se recoge cuota extra para completar pagos de vigilancia del mes de diciembre de 2024 (faltante: $180.000.oo) e iniciar nuevo año con uan base ($260.000.oo) 
+* Se recoge cuota extra para completar pagos de vigilancia del mes de diciembre de 2024 (faltante: $180.000.oo) e iniciar nuevo año con una base ($260.000.oo) 
 
 </div>
 
