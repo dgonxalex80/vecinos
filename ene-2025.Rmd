@@ -18,9 +18,11 @@ data <- read_excel("vecinos.xlsx", sheet = "ene2025")
 recaudo_total <- data %>% 
   mutate(total = pago1 + pago2)
 
-total_quincena1 <- sum(data$pago1, na.rm = TRUE)
-total_quincena2 <- sum(data$pago2, na.rm = TRUE)
-total_general <- total_quincena1+total_quincena2
+data$pago1 <- accounting(data$pago1)
+data$pago2 <- accounting(data$pago2)
+total_quincena1 <- accounting(sum(data$pago1, na.rm = TRUE))
+total_quincena2 <-accounting(sum(data$pago2, na.rm = TRUE))
+total_general <-  accounting(total_quincena1+total_quincena2)
 ```
 
 
@@ -31,9 +33,7 @@ names(data) <- c("Placa", "Nombre", "1ra-quincena", "2da-quincena")
 formattable(data,
              list(
               "1ra-quincena" = color_tile("white", "lightblue"),
-              "2da-quincena" = color_tile("white", "lightblue")#,
-              #"1ra-quincena" = comma,
-              #"2da-quincena" = comma
+              "2da-quincena" = color_tile("white", "lightblue")
             ))
 
 
