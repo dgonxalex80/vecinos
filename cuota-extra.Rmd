@@ -13,7 +13,7 @@ library(ggplot2)
 library(scales) # para la función comma()
 library(readxl)
 library(formattable)
-library(scales)
+#library(scales)
 data <- read_excel("vecinos.xlsx", sheet = "cuota-extra")
 ```
 
@@ -22,12 +22,14 @@ total <- c(sum(data$cuota, na.rm = TRUE))
 ```
 
 ```{r echo=FALSE}
-# Crear formato de color con sombreado solo para valores mayores a cero y formato con comas sin decimales
+library(formattable)
+
+data$cuota <- accounting(data$cuota)
+
+
 formattable(data, 
-            list(
-              cuota = color_tile("white", "lightblue")
-              #cuota = comma
-            ))
+            list(cuota = color_tile("white", "lightblue")
+    ))
 
 
 
@@ -36,7 +38,9 @@ formattable(data,
 
 
 ```{r, echo=FALSE}
+total = accounting(total)
 total = as.data.frame(total)
+
 formattable(total,
              list(
               total = color_tile("white", "lightblue")
