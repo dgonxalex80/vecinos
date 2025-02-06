@@ -32,8 +32,8 @@ names(data) <- c("Placa", "Nombre", "1ra-quincena", "2da-quincena")
 
 formattable(data,
              list(
-              "1ra-quincena" = color_tile("white", "lightblue"),
-              "2da-quincena" = color_tile("white", "lightblue")
+              "1ra-quincena" = color_tile("white", "#CADEFF"),
+              "2da-quincena" = color_tile("white", "#CADEFF")
             ))
 
 
