@@ -18,20 +18,32 @@ data <- read_excel("vecinos.xlsx", sheet = "feb2025")
 recaudo_total <- data %>% 
   mutate(total = pago1 + pago2)
 
-total_quincena1 <- sum(data$pago1, na.rm = TRUE)
-total_quincena2 <- sum(data$pago2, na.rm = TRUE)
-total_general <- total_quincena1+total_quincena2
+data$pago1 <- accounting(data$pago1)
+data$pago2 <- accounting(data$pago2)
+total_quincena1 <- accounting(sum(data$pago1, na.rm = TRUE))
+total_quincena2 <-accounting(sum(data$pago2, na.rm = TRUE))
+total_general <-  accounting(total_quincena1+total_quincena2)
 ```
 
 
 
 ```{r, echo=FALSE}
-names(data) <- c("Placa", "Nombre", "1ra quincena", "2da quincena")
+names(data) <- c("Placa", "Nombre", "1ra-quincena", "2da-quincena")
 
-kable(data)
+formattable(data,
+             list(
+              "1ra-quincena" = color_tile("white", "#CADEFF"),
+              "2da-quincena" = color_tile("white", "#CADEFF")
+            ))
+
+
+
 ```
 
 
+<br/>
+
+<div class="box-blue">
 
 ```{r, echo=FALSE}
 kable(data.frame(
@@ -39,3 +51,5 @@ kable(data.frame(
   Valor = c(total_quincena1, total_quincena2, total_general)
 ))
 ```
+
+</div>
